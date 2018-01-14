@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "728812467912",
+    "firebase_url": "https://steam-sequencer-134823.firebaseio.com",
+    "project_id": "steam-sequencer-134823",
+    "storage_bucket": "steam-sequencer-134823.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:728812467912:android:3fca092d762c6e91",
+        "android_client_info": {
+          "package_name": "com.ionicframework.calendarchurch559275"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "728812467912-d9csaa31d3p6cuue3nsg1ma66k398ukd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ionicframework.calendarchurch559275",
+            "certificate_hash": "d090ffb53d2e86f76ef0939e54917d188a6bd966"
+          }
+        },
+        {
+          "client_id": "728812467912-khijm7ro9b11sme8ou7qtvpm299ausrp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_Hyb1ooZbAMAuIip4pr5pakEUB_V8ud8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "728812467912-khijm7ro9b11sme8ou7qtvpm299ausrp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

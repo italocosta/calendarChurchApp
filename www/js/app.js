@@ -110,6 +110,15 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
           }
         }
       })
+      .state('tabs.studies12', {
+        url: '/studies12',
+        views: {
+          'studies12-tab': {
+            templateUrl: 'templates/studies12.html',
+            controller: 'StudyCtrl12'
+          }
+        }
+      })
       .state('study', {
         url: '/study/:idStudy?title?date',
         templateUrl: 'templates/study.html',
@@ -123,8 +132,7 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
     $scope.studySelect.date = $stateParams.date;
     $scope.studySelect.title = $stateParams.title;
     $scope.studySelect.content = '';
-    $scope.studySelect.content = $scope.studySelect.content.concat('<div class="div-date-study"><p>Nº ' + $scope.studySelect.idStudy + '</p>');
-    $scope.studySelect.content = $scope.studySelect.content.concat('<p>' + $scope.studySelect.date + '</p></div>');
+    $scope.studySelect.content = $scope.studySelect.content.concat('<div class="div-date-study"><p>Nº ' + $scope.studySelect.idStudy + '</p></div>');
     $scope.studySelect.content = $scope.studySelect.content.concat('<div class="div-title-study"><p>' + $scope.studySelect.title + '</p></div>');
     /*$scope.studySelect.content = $scope.studySelect.content.concat(
         '<p style="text-align: justify;"><em>“Bem-aventurados os humildes de espírito porque deles é o reino dos céus.” (Mateus 5:3).</em></p>'+
@@ -193,10 +201,19 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
 
 
   })
+  .controller('StudyCtrl12', function ($scope, $stateParams, $http, $ionicPopup, $ionicActionSheet, $ionicLoading, Studies) {
+    /*$scope.studies = {'list' : [{'id':1,'number':215,'title':'Humildade, o caminho de excelência para a cura - Parte Final','content':'Nesse estudo 215 vamos falar...'},
+                                {'id':2,'number':216,'title':'Teste 2','content':'Nesse estudo 216 vamos falar...'},
+                               ]
+                      };*/
+    //$scope.studies = $scope.$parent.studies;
+
+
+  })
 
   .controller('MainCtrl', function ($scope, $http, $ionicPopup, $ionicActionSheet, $ionicLoading, Events, Studies) {
-    //var baseUrl = "http://calendar.italo.site/calendarChurch/rest/";
-    var baseUrl = "http://localhost:8081/calendarChurch/rest/";
+    var baseUrl = "http://calendar.italo.site/calendarChurch/rest/";
+    //var baseUrl = "http://localhost:8081/calendarChurch/rest/";
     //var baseUrl = "http://192.175.112.170:13225/calendarChurch/rest/";
     //var baseUrl = "http://192.168.43.232:8080/calendarChurch/rest/";
     //var baseUrl = "https://api.myjson.com/bins/9zilx";
@@ -229,7 +246,7 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
       actionsheetstatus = 1;
       actionsheet = $ionicActionSheet.show({
         buttons: [
-          { text: '<i class="icon ion-refresh"></i> Atualizar calendário' },
+          { text: '<i class="icon ion-refresh"></i> Atualizar programação' },
           { text: '<i class="icon ion-refresh"></i> Atualizar estudos' }
         ],
         buttonClicked: function (index) {
@@ -248,7 +265,7 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
       if (showLoad) {
         showLoading('estudos');
       }
-      $http.get(baseUrl + 'study', { timeout: 30000 }).then(function (response) {
+      $http.get(baseUrl + 'study/all', { timeout: 30000 }).then(function (response) {
         var responseText = response.data;
         Studies.save(responseText.studies);
         console.log(responseText.studies);
@@ -267,7 +284,7 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
     };
     function updateEvents(showLoad) {
       if (showLoad) {
-        showLoading('calendário');
+        showLoading('programação');
       }
       $http.get(baseUrl + 'event', { timeout: 30000 }).then(function (response) {
         var responseText = response.data;
@@ -394,9 +411,9 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
       var customTemplate =
         '<ion-list>' +
         '<ion-item class="item item-text-wrap" ng-repeat="study in studies">' +
-        '<h3 class="popup-title">{{study.idStudy + \'-\' + study.dsTitle}}</h3>' +
+        '<h3 class="popup-title">{{ \'Estudo de célula -\' + study.idStudy}}</h3>' +
         '<h5 class="popup-sub-title">' +
-        '{{ (study.dtStudy.dayOfMonth < 10 ? \'0\' : \'\') + study.dtStudy.dayOfMonth +\'/\'+  (study.dtStudy.month < 9 ? \'0\' : \'\') + (study.dtStudy.month+1) + \'/\' + study.dtStudy.year  }}' +
+        '{{study.dsTitle}}' +
         '</h5>' +
         '</ion-item>' +
         '</ion-list>';

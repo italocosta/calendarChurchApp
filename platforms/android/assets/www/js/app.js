@@ -196,6 +196,7 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
 
   .controller('MainCtrl', function ($scope, $http, $ionicPopup, $ionicActionSheet, $ionicLoading, Events, Studies) {
     var baseUrl = "http://calendar.italo.site/calendarChurch/rest/";
+    //var baseUrl = "http://localhost:8081/calendarChurch/rest/";
     //var baseUrl = "http://192.175.112.170:13225/calendarChurch/rest/";
     //var baseUrl = "http://192.168.43.232:8080/calendarChurch/rest/";
     //var baseUrl = "https://api.myjson.com/bins/9zilx";

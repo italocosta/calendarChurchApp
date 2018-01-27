@@ -3,6 +3,7 @@
 <head lang="pt-BR">
   <meta charset="UTF-8">
   <meta name="description" content="Calendar Church">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
   <title>Miash</title>
   <link rel="stylesheet" href="lib/ionic/css/ionic.min.css"/>
   <link rel="stylesheet" href="lib/ionic-calendar/dist/css/calendar.css"/>
@@ -36,6 +37,9 @@
       <ion-tab title="Estudos de célula" icon="ion-ios-book-outline" ui-sref="tabs.studies">
         <ion-nav-view name="studies-tab"></ion-nav-view>
       </ion-tab>
+      <ion-tab title="Estudos de 12" icon="ion-ios-paper-outline" ui-sref="tabs.studies12">
+        <ion-nav-view name="studies12-tab"></ion-nav-view>
+      </ion-tab>
     </ion-tabs>
   </script>
 
@@ -64,10 +68,25 @@
     <ion-view>
       <ion-content scroll="false" class="main-content">
         <ion-list>
-          <a class="item" ng-repeat="study in studies" 
-            ui-sref="study({idStudy: {{study.idStudy}}, title: '{{study.title}}',  date: '{{study.dataFormatada}}'})">
-            {{study.title}}
-            <p>{{study.idStudy}} - {{study.dataFormatada}}</p>
+          <a class="item" ng-repeat="study in studies | filter: {tpStudy: 'CELULA'}" 
+            ui-sref="study({idStudy: {{study.idStudy}}, title: '{{study.title}}'})">
+            <p>{{study.idStudy}} - {{study.title}}</p>
+          </a>
+        </ion-list>
+      </ion-content>
+    </ion-view>
+  </script>
+
+  <script id="templates/studies12.html" type="text/ng-template">
+    <ion-nav-bar class="bar-positive bar-subheader" align-title="left">
+      <ion-nav-title>Estudos de 12</ion-nav-title>
+    </ion-nav-bar>
+    <ion-view>
+      <ion-content scroll="false" class="main-content">
+        <ion-list>
+          <a class="item" ng-repeat="study in studies | filter: {tpStudy: 'DOZE'}" 
+            ui-sref="study({idStudy: {{study.idStudy}}, title: '{{study.title}}'})">
+            <p>{{study.idStudy}} - {{study.title}}</p>
           </a>
         </ion-list>
       </ion-content>

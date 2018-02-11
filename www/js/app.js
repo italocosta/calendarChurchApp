@@ -101,8 +101,17 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
           }
         }
       })
+      .state('tabs.studies12', {
+        url: '/studies12',
+        views: {
+          'studies12-tab': {
+            templateUrl: 'templates/studies12.html',
+            controller: 'StudyCtrl12'
+          }
+        }
+      })
       .state('tabs.studies', {
-        url: '/studies',
+        url: '/studiesCell',
         views: {
           'studies-tab': {
             templateUrl: 'templates/studies.html',
@@ -110,12 +119,12 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
           }
         }
       })
-      .state('tabs.studies12', {
-        url: '/studies12',
+      .state('tabs.studiesChild', {
+        url: '/studiesChild',
         views: {
-          'studies12-tab': {
-            templateUrl: 'templates/studies12.html',
-            controller: 'StudyCtrl12'
+          'studiesChild-tab': {
+            templateUrl: 'templates/studiesChild.html',
+            controller: 'StudyCtrlChild'
           }
         }
       })
@@ -202,6 +211,15 @@ var myApp = angular.module('calendarChurch', ['ionic', 'ngAnimate', 'ui.rCalenda
 
   })
   .controller('StudyCtrl12', function ($scope, $stateParams, $http, $ionicPopup, $ionicActionSheet, $ionicLoading, Studies) {
+    /*$scope.studies = {'list' : [{'id':1,'number':215,'title':'Humildade, o caminho de excelência para a cura - Parte Final','content':'Nesse estudo 215 vamos falar...'},
+                                {'id':2,'number':216,'title':'Teste 2','content':'Nesse estudo 216 vamos falar...'},
+                               ]
+                      };*/
+    //$scope.studies = $scope.$parent.studies;
+
+
+  })
+  .controller('StudyCtrlChild', function ($scope, $stateParams, $http, $ionicPopup, $ionicActionSheet, $ionicLoading, Studies) {
     /*$scope.studies = {'list' : [{'id':1,'number':215,'title':'Humildade, o caminho de excelência para a cura - Parte Final','content':'Nesse estudo 215 vamos falar...'},
                                 {'id':2,'number':216,'title':'Teste 2','content':'Nesse estudo 216 vamos falar...'},
                                ]
